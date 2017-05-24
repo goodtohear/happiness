@@ -8,5 +8,6 @@ const initialState = {
 }
 
 export default combineReducers({
-  items
+  items,
+  connection
 })

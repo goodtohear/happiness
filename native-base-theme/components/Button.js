@@ -5,7 +5,6 @@ import variable from './../variables/platform';
 export default (variables = variable) => {
   const platformStyle = variables.platformStyle;
   const platform = variables.platform;
-  console.log("variables.btnFontFamily", variables.btnFontFamily)
   const buttonTheme = {
       '.disabled': {
         backgroundColor: variables.btnDisabledBg,
@@ -487,6 +486,5 @@ export default (variables = variable) => {
       alignItems: 'center',
       justifyContent: 'space-between',
   };
-  console.log("Button theme", buttonTheme)
   return buttonTheme;
 };

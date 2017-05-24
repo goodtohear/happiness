@@ -9,8 +9,21 @@ import { StyleProvider, View } from 'native-base';
 
 const store = configureStore()
 
+import config from '../../config'
+import firebase from 'firebase'
+import {monitorConnection} from '../actions/connection'
+import {monitorUsers} from '../actions/user'
+import {monitorItems} from '../actions/items'
 
 export default class Index extends Component {
+  componentWillMount(){
+      firebase.initializeApp(config.firebase)
+      console.log("Getting going")
+      monitorConnection(store)
+      monitorUsers(store)
+  }
+
+
   render(){
     return (
       <View style={{flex:1}}>

@@ -9,7 +9,7 @@ import People from './onboarding/people'
 
 const MainScreenNavigator = TabNavigator({
   Profile: {screen: Profile},
-  Collect: { screen: Collect },
+  Collect: {screen: Collect },
   Reports: {screen: Reports}
 },{
   initialRouteName: 'Collect'

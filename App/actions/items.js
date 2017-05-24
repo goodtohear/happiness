@@ -1,15 +1,32 @@
 import offline from 'react-native-simple-store'
-import { itemsRef } from '../firebase'
+import firebase from 'firebase'
 
 export const ADD_ITEM = 'ADD_ITEM'
 export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const REMOVE_ITEM_SUCCESS = 'REMOVE_ITEM_SUCCESS'
+export const ONLINE_ITEMS_LOADED = 'ONLINE_ITEMS_LOADED'
 export const OFFLINE_ITEMS_LOADED = 'OFFLINE_ITEMS_LOADED'
+
+
+function itemsRef(){
+  const {currentUser} = firebase.auth()
+  return firebase.database().ref(`users/${currentUser.uid}/items`)
+}
+
+export function monitorItems(store){
+  itemsRef().on('child_added', (snapshot) => {
+    store.dispatch(addItemSuccess(snapshot.val()))
+  })
+
+  itemsRef().on('child_removed', (snapshot)=>{
+    store.dispatch(removeItemSuccess(snapshot.val().id))
+  })
+}
 
 export function addItem(object) {
   const id = Math.random().toString(36).substring(7)
-  const itemRef = itemsRef.child(id)
+  const itemRef = itemsRef().child(id)
 
   itemRef.set({ // insert
     ...object,
@@ -18,7 +35,8 @@ export function addItem(object) {
   })
 
   return {
-    type: ADD_ITEM
+    type: ADD_ITEM,
+    id: id
   }
 }
 
@@ -30,7 +48,7 @@ export function addItemSuccess(itemData) {
 }
 
 export function removeItem(id) {
-  itemsRef.child(id).remove()
+  itemsRef().child(id).remove()
 
   return {
     type: REMOVE_ITEM,
@@ -43,7 +61,6 @@ export function removeItemSuccess(id) {
     id: id
   }
 }
-
 function offlineItemsLoaded(items) {
   return {
     type: OFFLINE_ITEMS_LOADED,

@@ -14,8 +14,9 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
   case ADD_ITEM_SUCCESS:
+    console.log("list before", state.onlineList)
     list = state.onlineList.concat([action.itemData]).sort((a, b) => b.time - a.time)
-
+    console.log("state after", list)
     return {
       ...state,
       onlineList: list,

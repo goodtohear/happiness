@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {ListItem,View, Text} from 'native-base'
 function mapStateToProps(state){
   return {
-    onlineItems: state.items.onlineList
+    items: state.items.onlineList
   }
 }
 function mapDispatchToProps(dispatch){
@@ -17,16 +17,16 @@ class InfluencesList extends Component {
     super()
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.text !== r2.text})
     this.state = {
-      dataSource: ds.cloneWithRows(props.onlineItems)
+      dataSource: ds.cloneWithRows(props.items)
     }
   }
   componentWillReceiveProps(newProps){
     this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(this.props.onlineItems)
+      dataSource: this.state.dataSource.cloneWithRows(newProps.items)
     })
   }
   render(){
-    return <View>{this.props.onlineItems.length > 0 ?
+    return <View>{this.props.items.length > 0 ?
           <ListView dataSource={this.state.dataSource} renderRow={(item)=>
               <ListItem><Text>{item.text}</Text></ListItem>
           }/> : <Text>Empty</Text>}</View>
