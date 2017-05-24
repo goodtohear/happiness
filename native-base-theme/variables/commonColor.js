@@ -1,3 +1,4 @@
+import colors from '../../App/styles/colors'
 import color from 'color';
 
 import { Platform, Dimensions, PixelRatio } from 'react-native';
@@ -6,6 +7,10 @@ const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 const platform = Platform.OS;
 const platformStyle = undefined;
+
+const BoldFont = "PlayfairDisplay-Black";
+const ItalicFont = "PlayfairDisplay-Italic";
+const SansFont = "OpenSans-CondensedBold"
 
 export default {
   platformStyle,
@@ -22,7 +27,7 @@ export default {
   badgePadding: (platform === 'ios') ? 3 : 0,
 
     // Button
-  btnFontFamily: (platform === 'ios') ? 'System' : 'Roboto_medium',
+  btnFontFamily: SansFont,
   btnDisabledBg: '#b5b5b5',
   btnDisabledClr: '#f1f1f1',
 
@@ -112,16 +117,16 @@ export default {
 
 
       // Color
-  brandPrimary: '#2874F0',
+  brandPrimary: colors.yellow,
   brandInfo: '#62B1F6',
   brandSuccess: '#5cb85c',
-  brandDanger: '#d9534f',
+  brandDanger: colors.red,
   brandWarning: '#f0ad4e',
   brandSidebar: '#252932',
 
 
     // Font
-  fontFamily: (platform === 'ios') ? 'System' : 'Roboto',
+  fontFamily: SansFont,
   fontSizeBase: 15,
 
   get fontSizeH1() {
@@ -167,7 +172,7 @@ export default {
   searchBarHeight: (platform === 'ios') ? 30 : 40,
   toolbarInverseBg: '#222',
   toolbarTextColor: '#fff',
-  iosStatusbar: 'light-content',
+  iosStatusbar: 'dark-content',
   toolbarDefaultBorder: '#2874F0',
   get statusBarColor() {
     return color(this.toolbarDefaultBg).darken(0.2).hexString();
@@ -259,13 +264,13 @@ export default {
 
 
     // Text
-  textColor: '#000',
+  textColor: colors.dark,
   inverseTextColor: '#fff',
   noteFontSize: 14,
 
 
     // Title
-  titleFontfamily: (platform === 'ios') ? 'System' : 'Roboto_medium',
+  titleFontfamily:  SansFont,
   titleFontSize: (platform === 'ios') ? 17 : 19,
   subTitleFontSize: (platform === 'ios') ? 12 : 14,
   subtitleColor: '#FFF',

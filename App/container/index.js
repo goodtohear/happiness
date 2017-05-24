@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from '../store/configureStore'
 import Components from '../components/index'
 
 import commonColorTheme from '../../native-base-theme/variables/commonColor'
 import getTheme from '../../native-base-theme/components'
-import { StyleProvider } from 'native-base';
+import { StyleProvider, View } from 'native-base';
 
 const store = configureStore()
 

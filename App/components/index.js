@@ -1,19 +1,35 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import {View, Header} from 'native-base';
+import {TabNavigator, StackNavigator} from 'react-navigation';
 import Collect from './collect';
-import Influences from './onboarding/influences'
+import Reports from './reports'
+import Profile from './profile'
+import Activities from './onboarding/activities'
+import People from './onboarding/people'
+
+const MainScreenNavigator = TabNavigator({
+  Profile: {screen: Profile},
+  Collect: { screen: Collect },
+  Reports: {screen: Reports}
+},{
+  initialRouteName: 'Collect'
+});
+
+const EditInfluences = StackNavigator({
+  EditActivities: { screen: Activities},
+  EditPeople: { screen: People}
+})
 
 const App = StackNavigator({
-  OnboardingActivities: {
-    screen: Influences,
-    screenProps: { filter: "activities" },
-  },
-  OnboardingPeople: {screen: Influences, filter: "people"},
-  Collect: {screen: Collect},
-},{
-  // headerMode: 'screen'
+  Home: {screen: MainScreenNavigator},
+  EditInfluences: {
+    screen: EditInfluences,
+    navigationOptions: {
+      header: null
+    }
   }
-);
+},{
+  mode: 'modal'
+})
 
 export default App;
