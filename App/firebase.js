@@ -1,7 +1,8 @@
 // not sure why I am putting firebase at the root, I'm just following https://github.com/bruz/react-native-redux-groceries/blob/master/src/firebase.js
 import { initializeApp } from 'firebase'
 import {userLoggedIn} from './actions/user'
-import {addItemSuccess, removeItemSuccess, goOnline, goOffline} from './actions/items'
+import {addItemSuccess, removeItemSuccess} from './actions/items'
+import { goOnline, goOffline} from './actions/connection'
 
 import config from '../config'
 const firebaseApp = initializeApp(config.firebase)
