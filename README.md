@@ -1,7 +1,7 @@
 # Happiness
 Happiness mood tracker by Michael Forrest / Good To Hear
 
-Written in React Native using Firebase. To run you'll need to create your own `config.js` based on `config.sample.js`.
+Written in React Native using Firebase. To run you'll need to create your own `config.js` based on `config.js.example`.
 
 ## Design
 ![design](./design/snapshot.png)
