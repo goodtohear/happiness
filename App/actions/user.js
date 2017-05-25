@@ -24,7 +24,8 @@ export function monitorUsers(store){
       monitorItems(store)
       store.dispatch(userLoggedIn(user))
     }else{
-      console.error("User logout handled and not sure if I even want to support this.")
+      // console.error("User logout handled and not sure if I even want to support this.")
+      loginAnonymously(store)
     }
   })
 

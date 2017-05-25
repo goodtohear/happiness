@@ -8,6 +8,8 @@ export const REMOVE_ITEM_SUCCESS = 'REMOVE_ITEM_SUCCESS'
 export const ONLINE_ITEMS_LOADED = 'ONLINE_ITEMS_LOADED'
 export const OFFLINE_ITEMS_LOADED = 'OFFLINE_ITEMS_LOADED'
 
+import _ from 'lodash'
+import data from '../dev/data'
 
 function itemsRef(){
   const {currentUser} = firebase.auth()
@@ -27,10 +29,12 @@ export function monitorItems(store){
 export function addItem(object) {
   const id = Math.random().toString(36).substring(7)
   const itemRef = itemsRef().child(id)
+  const image = _.sample(data.cards).image
 
   itemRef.set({ // insert
     ...object,
     id,
+    image: image,
     time: new Date().getTime()
   })
 

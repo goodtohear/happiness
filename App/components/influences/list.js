@@ -3,7 +3,9 @@ import {bindActionCreators} from 'redux'
 import * as ItemsActions from '../../actions/items'
 import {ListView} from 'react-native'
 import {connect} from 'react-redux'
-import {ListItem,View, Text} from 'native-base'
+import {ListItem,View, Text,Badge} from 'native-base'
+import _ from 'lodash'
+import colors from "../../styles/colors"
 function mapStateToProps(state){
   return {
     items: state.items.onlineList
@@ -28,7 +30,10 @@ class InfluencesList extends Component {
   render(){
     return <View>{this.props.items.length > 0 ?
           <ListView dataSource={this.state.dataSource} renderRow={(item)=>
-              <ListItem><Text>{item.text}</Text></ListItem>
+              <ListItem>
+                <Badge style={{backgroundColor: _.size(item.ratings) == 0 ? colors.grey : colors.yellow }}><Text>{_.size(item.ratings)}</Text></Badge>
+                <Text style={{paddingLeft: 10}}>{item.text}</Text>
+              </ListItem>
           }/> : <Text>Empty</Text>}</View>
   }
 

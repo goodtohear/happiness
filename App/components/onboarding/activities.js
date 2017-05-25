@@ -20,7 +20,7 @@ export default class Activities extends Component {
         <View style={{padding: 20}}>
           <NewInfluenceForm />
           <View style={{justifyContent: 'center', flexDirection: 'row', flex: 1}}>
-            <Button onPress={this.continue.bind(this)}>
+            <Button onPress={this.continue.bind(this)} full>
               <Text>{"Continue".toUpperCase()}</Text>
             </Button>
           </View>

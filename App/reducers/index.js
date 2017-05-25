@@ -1,5 +1,6 @@
 import items from './items'
 import connection from './connection'
+import ratings from './ratings'
 import {combineReducers} from 'redux'
 
 const initialState = {
@@ -9,5 +10,6 @@ const initialState = {
 
 export default combineReducers({
   items,
+  ratings,
   connection
 })
